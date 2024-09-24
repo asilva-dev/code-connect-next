@@ -1,25 +1,20 @@
 import { CardPost } from "@/components/CardPost";
 import styles from "./page.module.css";
 
-const post = {
-  "id": 1,
-  "cover": "https://raw.githubusercontent.com/viniciosneves/code-connect-assets/main/posts/introducao-ao-react.png",
-  "title": "Introdução ao React",
-  "slug": "introducao-ao-react",
-  "body": "Neste post, vamos explorar os conceitos básicos do React, uma biblioteca JavaScript para construir interfaces de usuário. Vamos cobrir componentes, JSX e estados.",
-  "markdown": "```javascript\nfunction HelloComponent() {\n  return <h1>Hello, world!</h1>;\n}\n```",
-  "author": {
-      "id": 101,
-      "name": "Amanda Silva",
-      "username": "amandasilva_dev",
-      "avatar": "https://raw.githubusercontent.com/viniciosneves/code-connect-assets/main/authors/anabeatriz_dev.png"
+async function getAllPosts () {
+  const response = await fetch('http://localhost:3042/posts');
+  if (!response.ok) {
+    console.log('Ops, algo está errado.')
+  } else {
+    return response.json();
   }
 }
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getAllPosts();
   return (
       <main className={styles.main}>
-        <CardPost post={post} />
+        {posts.map(post =>  <CardPost post={post} /> )}
       </main>
   );
 }
