@@ -1,13 +1,15 @@
 import { CardPost } from "@/components/CardPost";
 import styles from "./page.module.css";
+import logger from "@/logger";
 
 async function getAllPosts () {
-  const response = await fetch('http://localhost:3042/posts');
+  const response = await fetch('http://localhost:3042/posts')
   if (!response.ok) {
-    console.log('Ops, algo está errado.')
-  } else {
-    return response.json();
+    logger.error('Ops, alguma coisa correu mal')
+    return []
   }
+  logger.info('Posts obtidos com sucesso')
+  return response.json()
 }
 
 export default async function Home() {
@@ -18,3 +20,4 @@ export default async function Home() {
       </main>
   );
 }
+  
