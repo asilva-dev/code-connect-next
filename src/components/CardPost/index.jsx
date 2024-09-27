@@ -1,19 +1,20 @@
 import { Avatar } from "../Avatar";
 import Image from "next/image";
+import styles from './cardpost.module.css'
 
 export const CardPost = ({ post }) => {
     return(
-        <article>
-            <header>
+        <article className={styles.card}>
+            <header className={styles.header}>
                 <figure>
                     <Image src={post.cover} width={438} height={133} priority={true} alt={`Capa do post de título: ${post.title}`}/>
                 </figure>
             </header>
-            <section>
+            <section className={styles.body}>
                 <h2>{post.title}</h2>
                 <p>{post.body}</p>
             </section>
-            <footer>
+            <footer className={styles.footer}>
                 <Avatar 
                     imageSrc={post.author.avatar} 
                     name={post.author.username}

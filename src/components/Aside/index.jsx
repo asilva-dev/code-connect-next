@@ -6,7 +6,7 @@ import logo from './logo.png';
 export const Aside = () => {
     return(
         <aside className={styles.aside}>
-            <Image src={logo} alt='Logo da Code Connect' priority={true} />
+            <Image src={logo} alt='Logo da Code Connect'/>
         </aside>
     )
 }
