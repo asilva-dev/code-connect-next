@@ -1,8 +1,7 @@
+import { CardPost } from "@/components/CardPost"
+import logger from "@/logger"
 
-  import { CardPost } from "@/components/CardPost"
-  import logger from "@/logger"
-  
-  import styles from './page.module.css'
+import styles from './page.module.css'
 import Link from "next/link"
   
   async function getAllPosts (page) {
